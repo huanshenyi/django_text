@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="text" name="title">
+    <input type="text" name="content">
+    <input type="file" name="thumbnail">
+    <input type="submit" value="提出">
+    {% csrf_token %}
+    {% for key,error in form.errors.items %}{{ error }}{% endfor %}
+</form>
+</body>
+</html>
