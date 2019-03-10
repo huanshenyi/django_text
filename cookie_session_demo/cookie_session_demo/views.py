@@ -21,3 +21,14 @@ def cms_view(request):
     cookies = request.COOKIES
     username = cookies.get('userid')
     return HttpResponse(username)
+
+def session_view(request):
+    #request.session['username']='testdata'
+    username = request.session.get('username')
+    #username = request.session.pop('username')
+    #request.session['userid']=10
+    #request.session.clear()
+    #request.session.flush()
+    #print(username)
+    request.session.set_expiry(-1)
+    return HttpRequest('session_view')
