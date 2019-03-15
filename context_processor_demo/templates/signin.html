@@ -1,0 +1,34 @@
+{% extends '_nav.html' %}
+{% block content %}
+    <form action="{% url 'signin' %}" method="post">
+          <table>
+              <tbody>
+                  <tr>
+                      <td>username:</td>
+                      <td><input type="text" name="username"></td>
+                  </tr>
+                  <tr>
+                      <td>password:</td>
+                      <td><input type="text" name="password"></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td><input type="submit" value="ログイン"></td>
+                  </tr>
+                  <tr>
+                     <ul>
+                         {% for message in messages %}
+                             {% if message.tags == 'info'  %}
+                              <li style="color: yellow">
+                               {% else %}
+                                 <li>
+                            {% endif %}
+                             {{ message.tags }}/{{ message }}</li>
+                         {% endfor %}
+                     </ul>
+                  </tr>
+              </tbody>
+          </table>
+      {% csrf_token %}
+    </form>
+{% endblock %}
